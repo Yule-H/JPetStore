@@ -1,0 +1,17 @@
+0:0:0:0:0:0:0:1 - - [23/Jan/2018:15:41:20 +0800] "GET /cart/cart.action HTTP/1.1" 200 5185 http-bio-8088-exec-1 813
+0:0:0:0:0:0:0:1 - - [23/Jan/2018:15:41:20 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8088-exec-9 4
+0:0:0:0:0:0:0:1 - - [23/Jan/2018:15:41:21 +0800] "GET /catalog/list.action HTTP/1.1" 200 3658 http-bio-8088-exec-10 171
+0:0:0:0:0:0:0:1 - - [23/Jan/2018:15:41:23 +0800] "GET /catalog/prod.action HTTP/1.1" 200 3929 http-bio-8088-exec-10 120
+0:0:0:0:0:0:0:1 - - [23/Jan/2018:15:41:24 +0800] "GET /cart/cart.action HTTP/1.1" 200 5185 http-bio-8088-exec-10 45
+0:0:0:0:0:0:0:1 - - [23/Jan/2018:15:41:26 +0800] "GET /catalog/list.action HTTP/1.1" 200 3658 http-bio-8088-exec-10 38
+0:0:0:0:0:0:0:1 - - [23/Jan/2018:15:41:28 +0800] "GET /catalog/prod.action HTTP/1.1" 200 3929 http-bio-8088-exec-10 44
+0:0:0:0:0:0:0:1 - - [23/Jan/2018:15:41:29 +0800] "GET /cart/cart.action HTTP/1.1" 200 5185 http-bio-8088-exec-10 36
+0:0:0:0:0:0:0:1 - - [23/Jan/2018:15:44:58 +0800] "GET / HTTP/1.1" 200 5185 http-bio-8088-exec-1 113
+0:0:0:0:0:0:0:1 - - [23/Jan/2018:15:45:00 +0800] "GET /catalog/list.action HTTP/1.1" 200 3658 http-bio-8088-exec-7 116
+0:0:0:0:0:0:0:1 - - [23/Jan/2018:15:45:00 +0800] "GET /catalog/prod.action HTTP/1.1" 200 3929 http-bio-8088-exec-8 55
+0:0:0:0:0:0:0:1 - - [23/Jan/2018:15:45:02 +0800] "GET /cart/cart.action HTTP/1.1" 200 5185 http-bio-8088-exec-9 48
+0:0:0:0:0:0:0:1 - - [23/Jan/2018:15:48:46 +0800] "GET / HTTP/1.1" 200 5189 http-bio-8088-exec-1 649
+0:0:0:0:0:0:0:1 - - [23/Jan/2018:15:48:47 +0800] "GET /catalog/list.action HTTP/1.1" 200 3662 http-bio-8088-exec-11 175
+0:0:0:0:0:0:0:1 - - [23/Jan/2018:15:48:48 +0800] "GET /catalog/prod.action HTTP/1.1" 200 3937 http-bio-8088-exec-12 123
+0:0:0:0:0:0:0:1 - - [23/Jan/2018:15:48:49 +0800] "GET /cart/cartList.action HTTP/1.1" 200 5158 http-bio-8088-exec-12 132
+0:0:0:0:0:0:0:1 - - [23/Jan/2018:15:48:50 +0800] "GET /cart/checkout.action HTTP/1.1" 200 4411 http-bio-8088-exec-12 103
