@@ -1,6 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ include file="../common/IncludeTop.jsp"%>
 
+<script>
+function updateCart(str){
 <div id="Catalog">
 	<div id="BackLink">
 		<a href="<%=basePath%>catalog/main.action">返回主菜单</a>

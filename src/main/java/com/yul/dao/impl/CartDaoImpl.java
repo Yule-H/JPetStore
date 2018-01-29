@@ -31,7 +31,7 @@ public class CartDaoImpl implements CartDao {
 		cartKey.setItem((Item) session.createQuery("from Item where itemid=?").setParameter(0, itemid).list().get(0));
 		cart.setCartKey(cartKey);
 		cart.setAmount(num);
-		session.save(cart);
+		session.saveOrUpdate(cart);
 		tx.commit();
 		session.close();
 	}
