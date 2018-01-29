@@ -3,6 +3,10 @@
 
 <script>
 function updateCart(str){
+	
+}
+</script>
+
 <div id="Catalog">
 	<div id="BackLink">
 		<a href="<%=basePath%>catalog/main.action">返回主菜单</a>
@@ -31,7 +35,7 @@ function updateCart(str){
 								<c:if test="${cart.cartKey.item.unitcost>0 }" var="have">有</c:if>
 								<c:if test="${!have }">无</c:if>
 							</td>
-							<td><input type="text" name="inStock" size="5" value="${cart.amount }"/></td>
+							<td><input type="text" name="inStock" size="5" value="${cart.amount }" onblur="updateCart(this.value)" /></td>
 							<td>$${cart.cartKey.item.listprice }</td>
 							<td>$${cart.cartKey.item.listprice*cart.amount }</td>
 							<td><a Class="Button" href=""> 取消</a></td>
@@ -45,7 +49,7 @@ function updateCart(str){
 				</c:if>
 				<tr>
 					<td colspan="7">总金额: <input type="submit" name="update"
-						value="更新购物车" class="Button" />
+						value="更新购物车" class="Button"/>
 					</td>
 					<td>&nbsp;</td>
 				</tr>
