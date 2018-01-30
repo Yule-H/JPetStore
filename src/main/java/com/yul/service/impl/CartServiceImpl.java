@@ -25,4 +25,36 @@ public class CartServiceImpl implements CartService {
 		return cartDao.findByUserid(userid);
 	}
 
+	@Override
+	public void updateItem(Integer userid, String itemid, int i) {
+		Cart cart = cartDao.findByIds(userid,itemid);
+		i += cart.getAmount();
+		cartDao.addItem(userid, itemid, i);
+	}
+
+	@Override
+	public Double totleMoney(Integer userid) {
+		List<Cart> cartList = cartDao.findByUserid(userid);
+		Double totle = 0.0;
+		for (Cart cart : cartList) {
+			totle += cart.getAmount()*cart.getCartKey().getItem().getListprice();
+		}
+		System.out.println(totle);
+		return totle;
+	}
+
+	@Override
+	public void deleteByUserid(Integer userid) {
+		List<Cart> cartList = cartDao.findByUserid(userid);
+		for (Cart cart : cartList) {
+			cartDao.delete(cart);
+		}
+	}
+
+	@Override
+	public void delete(Integer userid, String itemid) {
+		Cart cart = cartDao.findByIds(userid, itemid);
+		cartDao.delete(cart);
+	}
+
 }

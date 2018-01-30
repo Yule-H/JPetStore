@@ -37,7 +37,7 @@
     <tr><td>
       $ ${item.listprice }
     <tr><td>
-      <a class="Button" href="<%=basePath %>cart/cartAdd.action">
+      <a class="Button" href="<%=basePath %>cart/cartAdd.action?itemid=${item.itemid }">
        添加到购物车</a>
     </td></tr>
   </table>

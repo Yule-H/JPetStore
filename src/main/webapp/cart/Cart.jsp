@@ -2,9 +2,13 @@
 <%@ include file="../common/IncludeTop.jsp"%>
 
 <script>
-function updateCart(str){
-	
-}
+$(function(){
+	$("input[name='inStock']").blur(function(){
+		var num = $(this).val();
+	  	var itemid = $(this).prev().val();
+	  	window.location.href="cart/cartUpdate.action?num="+num+"&itemid="+itemid;
+	});
+});
 </script>
 
 <div id="Catalog">
@@ -13,7 +17,7 @@ function updateCart(str){
 	</div>
 	<div id="Cart">
 		<h2>购物车</h2>
-		<form method="post">
+		<form method="post" action="<%=basePath%>cart/totleMoney.action">
 			<table>
 				<tr>
 					<th><b>商品编号</b></th>
@@ -28,14 +32,16 @@ function updateCart(str){
 				<c:if test="${cartList!=null }" var="flag">
 					<s:iterator value="cartList" var="cart" >
 						<tr>
-							<td><a href="<%=basePath%>catalog/item.action">${cart.cartKey.item.itemid }</a></td>
+							<td ><a href="<%=basePath%>catalog/item.action">${cart.cartKey.item.itemid }</a></td>
 							<td>${cart.cartKey.item.product.productid }</td>
 							<td>${cart.cartKey.item.attr1 }${cart.cartKey.item.product.name }</td>
 							<td>
 								<c:if test="${cart.cartKey.item.unitcost>0 }" var="have">有</c:if>
 								<c:if test="${!have }">无</c:if>
 							</td>
-							<td><input type="text" name="inStock" size="5" value="${cart.amount }" onblur="updateCart(this.value)" /></td>
+							<td>
+								<input type="hidden" value="${cart.cartKey.item.itemid }"/>
+								<input type="text" name="inStock" size="5" value="${cart.amount }" /></td>
 							<td>$${cart.cartKey.item.listprice }</td>
 							<td>$${cart.cartKey.item.listprice*cart.amount }</td>
 							<td><a Class="Button" href=""> 取消</a></td>
@@ -48,7 +54,7 @@ function updateCart(str){
 					</tr>
 				</c:if>
 				<tr>
-					<td colspan="7">总金额: <input type="submit" name="update"
+					<td colspan="7">总金额:$${sessionScope.tot }<input type="submit" name="update"
 						value="更新购物车" class="Button"/>
 					</td>
 					<td>&nbsp;</td>

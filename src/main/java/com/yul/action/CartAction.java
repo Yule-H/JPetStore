@@ -37,7 +37,16 @@ public class CartAction extends ActionSupport {
 	private CartService cartService;
 	private List<Cart> cartList;
 	private String itemid;
-	private Integer inStock;
+	private Integer num;
+	private Double totleMoney = 0.0;
+	public Double getTotleMoney() {
+		return totleMoney;
+	}
+
+	public void setTotleMoney(Double totleMoney) {
+		this.totleMoney = totleMoney;
+	}
+
 	public String getItemid() {
 		return itemid;
 	}
@@ -95,23 +104,61 @@ public class CartAction extends ActionSupport {
 		if (account == null) {
 			return LOGIN;
 		}
-		cartService.addItem(account.getUserid(), itemid, inStock);
+		cartService.addItem(account.getUserid(), itemid, num);
+		return SUCCESS;
+	}
+	
+	/**
+	 * 计算总金额
+	 */
+	@Action(value = "/totleMoney", results = {
+			@Result(name = "success", location = "/cart/cartList.action", type = "redirectAction"),
+			@Result(name = "login", location = "/account/SignonForm.jsp") })
+	public String totleMoney() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		Account account = (Account) request.getSession().getAttribute(LOGIN);
+		if (account == null) {
+			return LOGIN;
+		}
+		totleMoney = cartService.totleMoney(account.getUserid());
+		request.getSession().setAttribute("tot", totleMoney);
+		return SUCCESS;
+	}
+	
+	@Action(value = "/delete", results = {
+			@Result(name = "success", location = "/cart/cartList.action", type = "redirectAction"),
+			@Result(name = "login", location = "/account/SignonForm.jsp") })
+	public String delete() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		Account account = (Account) request.getSession().getAttribute(LOGIN);
+		if (account == null) {
+			return LOGIN;
+		}
+		cartService.delete(account.getUserid(),itemid);
 		return SUCCESS;
 	}
 
 	/**
 	 * 结算
 	 */
-	@Action(value = "/checkout", results = { @Result(name = "success", location = "/cart/Checkout.jsp") })
+	@Action(value = "/checkout", results = { @Result(name = "success", location = "/cart/Checkout.jsp"),
+											@Result(name = "login", location = "/account/SignonForm.jsp") })
 	public String checkout() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		Account account = (Account) request.getSession().getAttribute(LOGIN);
+		if (account == null) {
+			return LOGIN;
+		}
+		cartService.deleteByUserid(account.getUserid());
 		return SUCCESS;
 	}
 
-	public Integer getInStock() {
-		return inStock;
+	public Integer getNum() {
+		return num;
 	}
 
-	public void setInStock(Integer inStock) {
-		this.inStock = inStock;
+	public void setNum(Integer num) {
+		this.num = num;
 	}
+
 }

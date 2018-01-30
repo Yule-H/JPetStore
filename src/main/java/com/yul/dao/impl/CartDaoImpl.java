@@ -43,4 +43,17 @@ public class CartDaoImpl implements CartDao {
 		return cartList;
 	}
 
+	@Override
+	public Cart findByIds(Integer userid, String itemid) {
+		Session session = sessionFactory.openSession();
+		List<Cart> cartList = session.createQuery("from Cart where userid=? and itemid=?").setParameter(0, userid).setParameter(1, itemid).list();
+		return cartList.get(0);
+	}
+
+	@Override
+	public void delete(Cart cart) {
+		Session session = sessionFactory.openSession();
+		session.delete(cart);
+		session.close();
+	}
 }

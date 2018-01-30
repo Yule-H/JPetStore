@@ -10,4 +10,8 @@ public interface CartDao {
 
 	public List<Cart> findByUserid(Integer userid);
 
+	public Cart findByIds(Integer userid, String itemid);
+
+	public void delete(Cart cart);
+
 }
